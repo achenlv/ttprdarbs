@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('readings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sensor_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('device_id');
             $table->timestamp('read_at', precision: 0);
             $table->timestamps();
         });
@@ -24,9 +25,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-      // Schema::table('readings', function (Blueprint $table) {
-      //     $table->dropForeign(['sensor_id']);
-      // });
+      Schema::table('readings', function (Blueprint $table) {
+          $table->dropForeign(['sensor_id']);
+      });
       Schema::dropIfExists('readings');
     }
 };

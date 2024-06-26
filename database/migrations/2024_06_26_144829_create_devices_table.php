@@ -13,8 +13,8 @@ return new class extends Migration
   {
     Schema::create('devices', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('property_id')->constrained()->onDelete('cascade');
-      // $table->unsignedBigInteger('property_id');
+      // $table->foreignId('property_id')->constrained()->onDelete('cascade');
+      $table->unsignedBigInteger('property_id');
       // $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
       $table->string('manudacturer');
       $table->string('model');

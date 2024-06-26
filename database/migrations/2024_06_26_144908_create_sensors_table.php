@@ -26,9 +26,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-      // Schema::table('sensors', function (Blueprint $table) {
-      //   $table->dropForeign(['device_id']);
-      // });
+      Schema::table('sensors', function (Blueprint $table) {
+        $table->dropForeign(['device_id']);
+      });
       Schema::dropIfExists('sensors');
     }
 };

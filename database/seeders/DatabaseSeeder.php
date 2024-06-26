@@ -3,6 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Address;
+use App\Models\Device;
+use App\Models\Sensor;
+use App\Models\Client;
+use App\Models\Property;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,6 +24,11 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        User::factory()->create([
+          'name' => 'Agris',
+          'email' => 'sd70027@students.lu.lv',
         ]);
     }
 }
