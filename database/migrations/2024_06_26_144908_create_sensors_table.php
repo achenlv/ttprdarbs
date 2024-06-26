@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sensors', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+          $table->id();
+          $table->foreignId('device_id')->constrained()->onDelete('cascade');
+          $table->string('type');
+          $table->string('status');
+          $table->text('additional_information')->charset('binary');
+          $table->timestamps();
         });
     }
 
@@ -22,6 +26,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sensors');
+      // Schema::table('sensors', function (Blueprint $table) {
+      //   $table->dropForeign(['device_id']);
+      // });
+      Schema::dropIfExists('sensors');
     }
 };
