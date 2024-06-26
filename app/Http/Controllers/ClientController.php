@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
-use App\models\Address;
+use App\Models\Address;
 
 
 class ClientController extends Controller
@@ -14,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-      $clients= Client::all()->SortByAsc('name');
+      $clients= Client::all()->sortBy('name');
       $addresses= Address::all();
       return view('clients.index', compact('clients', 'addresses'));
     }
