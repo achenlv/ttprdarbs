@@ -10,7 +10,7 @@
 
   <div class="container">
     <h1>Clients</h1>
-
+    <a href="{{ route('clients.create') }}">Add new client</a>
     <table class="table">
       <thead>
         <tr>
@@ -21,8 +21,8 @@
       <tbody>
         @foreach ($clients as $client)
           <tr>
-            <td>{{ $client->name }}</td>
-            <td>{{ $client->identifier }}</td>
+          <td><a href="{{ route('clients.edit', $client->id) }}">{{ $client->identifier }}</a></td>
+          <td><a href="{{ route('clients.edit', $client->id) }}">{{ $client->name }}</a></td>
           </tr>
         @endforeach
       </tbody>
