@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
 
-                    lalala - tests 2
+                    lalala - tests 23
                 </div>
             </div>
         </div>
