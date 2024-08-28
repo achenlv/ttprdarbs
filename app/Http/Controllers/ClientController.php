@@ -14,7 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-      $clients= Client::all()->sortBy('name');
+      // $clients= Client::all()->sortBy('name');
+      $clients = Client::with('address')->get()->sortBy('name');
       return view('clients.index', compact('clients'));
       // $addresses= Address::all();
       // return view('clients.index', compact('clients', 'addresses'));
@@ -52,7 +53,9 @@ class ClientController extends Controller
       $client->address_id = $request->address_id;
       $client->save();
 
-      return redirect()->route('clients.show', $client->id);
+      // return redirect()->route('clients.show', $client->id);
+      return redirect()->route('clients.index')
+                         ->with('success', 'Izmaiņas klientu sarakstā ir veiktas.');
     }
 
     /**

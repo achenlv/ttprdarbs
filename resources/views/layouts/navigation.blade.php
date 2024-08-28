@@ -16,6 +16,22 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.index')">
+                        {{ __('Klienti') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('devices.index')" :active="request()->routeIs('devices.index')">
+                        {{ __('Iekārtas') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('addresses.index')" :active="request()->routeIs('addresses.index')">
+                        {{ __('Adreses') }}
+                    </x-nav-link>
+                </div>
+                       
             </div>
 
             <!-- Settings Dropdown -->

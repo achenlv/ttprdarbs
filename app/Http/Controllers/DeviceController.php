@@ -12,23 +12,23 @@ class DeviceController extends Controller
      */
     public function index()
     {
-      $devices = DB::table('properties')
-          ->leftJoin('devices', 'properties.id', '=', 'devices.property_id')
-          // ->leftJoin('addresses', 'devices.address_id', '=', 'addresses.id')
-          ->leftJoin('clients', 'properties.client_id', '=', 'client.id')
-          ->select(
-              DB::raw('clients.name AS Klients'),
-              DB::raw('properties.name'),
-              // DB::raw("CONCAT(addresses.city, ', ', addresses.street) AS Adrese"),
-              DB::raw("CONCAT(devices.manudacturer, ' ', devices.model) AS Iekarta"),
-              'devices.serial_number',
-              'devices.provided_at'
-          )
-          ->whereNotNull('devices.property_id')
-          // ->whereNotNull('Ik.id')
-          ->get();
+      // $devices = DB::table('properties')
+      //     ->leftJoin('devices', 'properties.id', '=', 'devices.property_id')
+      //     // ->leftJoin('addresses', 'devices.address_id', '=', 'addresses.id')
+      //     ->leftJoin('clients', 'properties.client_id', '=', 'client.id')
+      //     ->select(
+      //         DB::raw('clients.name AS Klients'),
+      //         DB::raw('properties.name'),
+      //         // DB::raw("CONCAT(addresses.city, ', ', addresses.street) AS Adrese"),
+      //         DB::raw("CONCAT(devices.manudacturer, ' ', devices.model) AS Iekarta"),
+      //         'devices.serial_number',
+      //         'devices.provided_at'
+      //     )
+      //     ->whereNotNull('devices.property_id')
+      //     // ->whereNotNull('Ik.id')
+      //     ->get();
 
-      return view('devices.index', compact('devices'));
+      // return view('devices.index', compact('devices'));
   }
 
     /**

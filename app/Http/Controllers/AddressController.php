@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Address;
 
 class AddressController extends Controller
 {
@@ -12,6 +13,8 @@ class AddressController extends Controller
     public function index()
     {
         //
+      $addresses= Address::all()->sortBy('id');
+      return view('addresses.index', compact('addresses'));
     }
 
     /**
@@ -20,6 +23,7 @@ class AddressController extends Controller
     public function create()
     {
         //
+      return view('addresses.create');
     }
 
     /**
@@ -28,6 +32,24 @@ class AddressController extends Controller
     public function store(Request $request)
     {
         //
+      $request->validate([
+        'country' => 'required',
+        'city' => 'required',
+        'street' => 'required',
+        'additional_inforamtion' => 'nullable',
+      ]);
+
+      $address = new Address;
+      $address->country = $request->country;
+      $address->city = $request->city;
+      $address->street = $request->street;
+      if ($request->additional_information) {
+        $client->additional_information = $request->additional_information;
+      } else {
+        $client->additional_information = '';
+      };
+
+      return redirect()->route('addresses.index');      
     }
 
     /**
@@ -36,6 +58,8 @@ class AddressController extends Controller
     public function show(string $id)
     {
         //
+      $address = Address::findOrFail($id);
+      return view('addresses.show', compact('address'));
     }
 
     /**
@@ -44,6 +68,8 @@ class AddressController extends Controller
     public function edit(string $id)
     {
         //
+      $address = Address::findOrFail($id);
+      return view('addresses.edit', compact('address'));
     }
 
     /**
